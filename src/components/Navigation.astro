@@ -2,6 +2,12 @@
 import Image from "astro/components/Image.astro";
 import Logo from "../assets/images/codewithtom-color.png";
 import Hero from "../assets/images/hero.png";
+
+const { url } = Astro.request;
+function isActive(path: string) {
+  const currentUrl = new URL(url, Astro.site || "http://localhost");
+  return currentUrl.pathname === path;
+}
 ---
 
 <div class="navbar bg-base-100 shadow-xs">
@@ -53,16 +59,32 @@ import Hero from "../assets/images/hero.png";
     <div class="navbar-center hidden md:flex">
       <ul class="menu menu-horizontal space-x-2">
         <li>
-          <a href="/" class="btn btn-sm btn-accent font-bold text-sm">Home</a>
+          <a
+            href="/"
+            class={`btn btn-sm font-bold text-sm ${isActive("/") ? "btn-accent" : ""}`}
+            >Home</a
+          >
         </li>
         <li>
-          <a href="/projects/" class="btn btn-sm font-bold text-sm">Projects</a>
+          <a
+            href="/projects/"
+            class={`btn btn-sm font-bold text-sm ${isActive("/projects/") ? "btn-accent" : ""}`}
+            >Projects</a
+          >
         </li>
         <li>
-          <a href="/blog/" class="btn btn-sm font-bold text-sm">Blog</a>
+          <a
+            href="/blog/"
+            class={`btn btn-sm font-bold text-sm ${isActive("/blog/") ? "btn-accent" : ""}`}
+            >Blog</a
+          >
         </li>
         <li>
-          <a href="/about/" class="btn btn-sm font-bold text-sm">About</a>
+          <a
+            href="/about/"
+            class={`btn btn-sm font-bold text-sm ${isActive("/about/") ? "btn-accent" : ""}`}
+            >About</a
+          >
         </li>
       </ul>
     </div>
