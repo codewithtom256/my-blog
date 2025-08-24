@@ -1,20 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const allPosts = Object.values(
-  import.meta.glob("./posts/*.md", { eager: true })
+const allProjects = Object.values(
+  import.meta.glob("./projects/*.md", { eager: true })
 );
-const pageTitle = "Blog";
+const pageTitle = "Projects";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <section class="my-8">
-    <h2 class="text-2xl font-bold">All Posts</h2>
+    <h2 class="text-2xl font-bold">All Projects</h2>
     <h3 class="text-md font-semibold w-96 text-black opacity-50">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quis!
     </h3>
     <div class="grid grid-cols-2 gap-4 mt-8">
       {
-        allPosts.map((post: any) => (
+        allProjects.map((post: any) => (
           <article class="p-2 bg-base-200  rounded-lg flex h-48 drop-shadow-lg">
             <div class="aspect-square">
               <img
@@ -50,4 +50,32 @@ const pageTitle = "Blog";
       }
     </div>
   </section>
+  <!-- <ul>
+    {
+      allPosts.map((post: any) => (
+        <li>
+          {" "}
+          <a href={post.url}>
+            <div class="card bg-base-100 w-96 shadow-sm">
+              <figure>
+                <img src={post.frontmatter.image.url} alt="Shoes" />
+              </figure>
+              <div class="card-body">
+                <h2 class="card-title">
+                  {post.frontmatter.title}
+                  <div class="badge badge-secondary">NEW</div>
+                </h2>
+                <p>{post.frontmatter.description}</p>
+                <div class="card-actions justify-end">
+                  {post.frontmatter.tags.map((tag: string) => (
+                    <div class="badge badge-outline">{tag}</div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul> -->
 </BaseLayout>
