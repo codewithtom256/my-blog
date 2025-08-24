@@ -18,35 +18,58 @@
   ],
   "frontMatter.taxonomy.contentTypes": [
     {
-      "name": "default",
+      "name": "post",
       "pageBundle": false,
       "previewPath": "'blog'",
       "filePrefix": null,
       "clearEmpty": true,
       "fields": [
         {
-          "title": "Title",
-          "name": "title",
-          "type": "string",
-          "single": true
+          "title": "layout",
+          "name": "layout",
+          "type": "string"
         },
         {
-          "title": "Description",
+          "title": "title",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "title": "pubDate",
+          "name": "pubDate",
+          "type": "datetime"
+        },
+        {
+          "title": "description",
           "name": "description",
           "type": "string"
         },
         {
-          "title": "Publishing date",
-          "name": "pubDate",
-          "type": "datetime",
-          "default": "{{now}}",
-          "isPublishDate": true
+          "title": "author",
+          "name": "author",
+          "type": "string"
         },
         {
-          "title": "Content preview",
-          "name": "heroImage",
-          "type": "image",
-          "isPreviewImage": true
+          "title": "image",
+          "name": "image",
+          "type": "fields",
+          "fields": [
+            {
+              "title": "url",
+              "name": "url",
+              "type": "string"
+            },
+            {
+              "title": "alt",
+              "name": "alt",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "title": "tags",
+          "name": "tags",
+          "type": "tags"
         }
       ]
     }
