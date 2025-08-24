@@ -72,6 +72,62 @@
           "type": "tags"
         }
       ]
+    },
+     {
+      "name": "project",
+      "pageBundle": false,
+      "previewPath": "'project'",
+      "filePrefix": null,
+      "clearEmpty": true,
+      "fields": [
+        {
+          "title": "layout",
+          "name": "layout",
+          "type": "string"
+        },
+        {
+          "title": "title",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "title": "pubDate",
+          "name": "pubDate",
+          "type": "datetime"
+        },
+        {
+          "title": "description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "author",
+          "name": "author",
+          "type": "string"
+        },
+        {
+          "title": "image",
+          "name": "image",
+          "type": "fields",
+          "fields": [
+            {
+              "title": "url",
+              "name": "url",
+              "type": "string"
+            },
+            {
+              "title": "alt",
+              "name": "alt",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "title": "tags",
+          "name": "tags",
+          "type": "tags"
+        }
+      ]
     }
   ],
   "frontMatter.git.enabled": true
