@@ -14,85 +14,111 @@ const lastProjects = Object.values(
 
 <BaseLayout pageTitle={pageTitle}>
   <section class="my-8">
-    <h2 class="text-2xl font-bold">Recent Projects</h2>
-    <h3 class="text-md font-semibold w-96 text-black opacity-50">
+    <div class="flex items-center space-x-4">
+      <div class="h-16 w-16 bg-red-200 rounded-full"></div>
+      <div>
+        <h1 class="font-bold text-2xl leading-none">Thomas</h1>
+        <h2 class="font-semibold text-md">Développeur généraliste</h2>
+      </div>
+    </div>
+    <div class="text-sm font-semibold mt-4">
+      Passionné par le développement web et les nouvelles technologies, je
+      m'efforce de créer des solutions innovantes et performantes. Mon parcours
+      m'a permis d'explorer de nombreux domaines, allant du front-end au
+      back-end, en passant par le DevOps et l'automatisation.
+    </div>
+    <div class="mt-4">
+      <h3 class="text-sm font-semibold leading-none">
+        Email <span class="badge badge-sm leading-none"
+          >thomas@codewithtom.io</span
+        >
+      </h3>
+      <h3 class="text-sm font-semibold leading-none">
+        Discord <span class="badge badge-sm leading-none">codewithtom</span>
+      </h3>
+    </div>
+  </section>
+
+  <hr class="my-8 border-base-300" />
+
+  <section class="my-8">
+    <h3 class="text-xl font-bold leading-none">Recent Projects</h3>
+    <h2 class="text-sm font-semibold w-96 leading-none mt-1">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quis!
-    </h3>
+    </h2>
     <div class="grid grid-cols-2 gap-4 mt-8">
       {
         lastProjects.map((post: any) => (
-          <article class="p-2 bg-base-200  rounded-lg flex h-48 drop-shadow-lg">
-            <div class="aspect-square">
+          <article class="p-2 bg-base-200  rounded-lg flex space-x-2 drop-shadow-lg border border-base-300">
+            <div class="h-32 w-32 aspect-square">
               <img
                 class="rounded-lg object-center object-cover h-full w-full"
                 src={post.frontmatter.image.url}
-                alt=""
+                alt={post.frontmatter.title || "Project image"}
+                loading="lazy"
+                decoding="async"
+                style="image-rendering: auto;"
               />
             </div>
-            <div class="ml-4 flex flex-col justify-between w-full">
-              <div class="flex justify-between text-sm">
-                <p>{post.frontmatter.pubDate}</p>
-                <p>a</p>
-              </div>
-              <div>
-                <h3 class="text-md font-bold">{post.frontmatter.title}</h3>
-                <p class="text-sm font-normal mt-2">
-                  {(() => {
-                    const text = post.frontmatter.description || "";
-                    const words = text.split(" ");
-                    return words.length > 15
-                      ? words.slice(0, 15).join(" ") + "..."
-                      : text;
-                  })()}
-                </p>
-              </div>
 
-              <a href="" class="text-primary">
-                Read the project
-              </a>
+            <div class="space-y-3 self-start flex flex-col h-full">
+              <div class="flex justify-between items-center">
+                <div class="badge badge-sm font-semibold border border-base-300">
+                  Unity Tutorial
+                </div>
+                <div class="text-xs font-semibold">1 year ago</div>
+              </div>
+              <div class="space-y-2 flex-1">
+                <div class="leading-none font-bold text-sm">
+                  {post.frontmatter.title}
+                </div>
+                <div class="text-xs text-gray-500 leading-none font-semibold">
+                  {post.frontmatter.description}
+                </div>
+              </div>
             </div>
           </article>
         ))
       }
     </div>
   </section>
+  <hr class="my-8 border-base-300" />
+
   <section class="my-8">
-    <h2 class="text-2xl font-bold">Recent Posts</h2>
-    <h3 class="text-md font-semibold w-96 text-black opacity-50">
+    <h3 class="text-xl font-bold leading-none">Recent Blog Posts</h3>
+    <h2 class="text-sm font-semibold w-96 leading-none mt-1">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quis!
-    </h3>
+    </h2>
     <div class="grid grid-cols-2 gap-4 mt-8">
       {
-        lastPosts.map((post: any) => (
-          <article class="p-2 bg-base-200  rounded-lg flex h-48 drop-shadow-lg">
-            <div class="aspect-square">
+        lastProjects.map((post: any) => (
+          <article class="p-2 bg-base-200  rounded-lg flex space-x-2 drop-shadow-lg border border-base-300">
+            <div class="h-32 w-32 aspect-square">
               <img
                 class="rounded-lg object-center object-cover h-full w-full"
                 src={post.frontmatter.image.url}
-                alt=""
+                alt={post.frontmatter.title || "Project image"}
+                loading="lazy"
+                decoding="async"
+                style="image-rendering: auto;"
               />
             </div>
-            <div class="ml-4 flex flex-col justify-between w-full">
-              <div class="flex justify-between text-sm">
-                <p>{post.frontmatter.pubDate}</p>
-                <p>a</p>
-              </div>
-              <div>
-                <h3 class="text-md font-bold">{post.frontmatter.title}</h3>
-                <p class="text-sm font-normal mt-2">
-                  {(() => {
-                    const text = post.frontmatter.description || "";
-                    const words = text.split(" ");
-                    return words.length > 15
-                      ? words.slice(0, 15).join(" ") + "..."
-                      : text;
-                  })()}
-                </p>
-              </div>
 
-              <a href="" class="text-primary">
-                Read the post
-              </a>
+            <div class="space-y-3 self-start flex flex-col h-full">
+              <div class="flex justify-between items-center">
+                <div class="badge badge-sm font-semibold border border-base-300">
+                  Unity Tutorial
+                </div>
+                <div class="text-xs font-semibold">1 year ago</div>
+              </div>
+              <div class="space-y-2 flex-1">
+                <div class="leading-none font-bold text-sm">
+                  {post.frontmatter.title}
+                </div>
+                <div class="text-xs text-gray-500 leading-none font-semibold">
+                  {post.frontmatter.description}
+                </div>
+              </div>
             </div>
           </article>
         ))

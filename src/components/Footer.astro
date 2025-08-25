@@ -1,7 +1,82 @@
 ---
+import Image from "astro/components/Image.astro";
+import Logo from "../assets/images/codewithtom-color.png";
+import Hero from "../assets/images/hero.png";
 
+const { url } = Astro.request;
+function isActive(path: string) {
+  const currentUrl = new URL(url, Astro.site || "http://localhost");
+  return currentUrl.pathname === path;
+}
 ---
 
-<footer class="container mx-auto max-w-screen-lg">
-  <p>Footer content goes here</p>
-</footer>
+<div
+  class="navbar bg-base-100 shadow-xs sticky top-0 z-50 border-t border-base-300"
+>
+  <div class="container mx-auto max-w-screen-md flex">
+    <div class="navbar-start">
+      <div class="dropdown">
+        <div tabindex="0" role="button" class="btn btn-ghost md:hidden pl-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h8m-8 6h16"></path>
+          </svg>
+        </div>
+        <ul
+          tabindex="0"
+          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 p-2 shadow"
+        >
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about/">About</a>
+          </li>
+          <li>
+            <a href="/blog/">Blog</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <a
+            href="/"
+            class="btn btn-ghost text-xl px-0 box-content aspect-square"
+          >
+            <Image src={Logo} alt="Code With Tom" />
+          </a>
+          <div>
+            <div class="font-bold whitespace-nowrap inline-block leading-none">
+              Code With Tom
+            </div>
+            <div class="font-semibold text-xs leading-none">
+              2025 - All rights reserved
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-center">
+      <div>
+        <h3 class="text-sm font-semibold leading-none">
+          Email <span class="badge badge-sm leading-none"
+            >thomas@codewithtom.io</span
+          >
+        </h3>
+        <h3 class="text-sm font-semibold leading-none">
+          Discord <span class="badge badge-sm leading-none">codewithtom</span>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

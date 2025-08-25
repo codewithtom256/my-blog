@@ -5,6 +5,9 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
+  <div class="article-detail">
+    <slot />
+  </div>
   <!-- <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
   <p><em>{frontmatter.description}</em></p>
   <p>Written by: {frontmatter.author}</p>
@@ -18,5 +21,4 @@ const { frontmatter } = Astro.props;
       ))
     }
   </div> -->
-  <slot />
 </BaseLayout>
