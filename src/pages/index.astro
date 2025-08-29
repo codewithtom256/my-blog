@@ -72,7 +72,7 @@ const testimonials = Object.values(
     description="Fresh from the lab: my newest digital builds and creative experiments. Dive in and get inspired!"
     seeAllLink="/projects"
   >
-    <div class="grid grid-cols-2 gap-4 mt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
       {
         lastProjects.map((post: any) => (
           <PreviewCard
@@ -95,7 +95,7 @@ const testimonials = Object.values(
     description="Explore my freshest blog posts—insights, tutorials, and stories from my journey in tech and creativity."
     seeAllLink="/blog"
   >
-    <div class="grid grid-cols-2 gap-4 mt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
       {
         lastPosts.map((post: any) => (
           <PreviewCard
@@ -118,7 +118,7 @@ const testimonials = Object.values(
     description="A few highlights from awesome people I’ve teamed up with—honest thoughts, cool stories, and a sprinkle of good vibes."
     seeAllLink="/testimonials"
   >
-    <div class="grid grid-cols-3 gap-4 mt-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
       {
         testimonials.map((testimonal: any) => (
           <PreviewCardSmall
