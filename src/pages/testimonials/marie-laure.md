@@ -3,8 +3,8 @@ layout: ../../layouts/MarkdownLayout.astro
 author: Marie-Laure
 type: testimonials
 avatar:
-  url: "https://cdn-bgp.bluestacks.com/BGP/fr/gametiles_com.miHoYo.GenshinImpact.jpg"
-  alt: "Blonde Studio"
+  url: "/assets/images/testimonials/marie-laure.jpg"
+  alt: "Marie-Laure"
 company: La Collab
 messagePreview: J’ai eu l’occasion de travailler avec Thomas sur la migration d’une web app de VueJs 2 vers VueJS 3... 
 ---

@@ -3,8 +3,8 @@ layout: ../../layouts/MarkdownLayout.astro
 author: Damien
 type: testimonials
 avatar:
-  url: "https://cdn-bgp.bluestacks.com/BGP/fr/gametiles_com.miHoYo.GenshinImpact.jpg"
-  alt: "Blonde Studio"
+  url: "/assets/images/testimonials/damien.png"
+  alt: "DC Consulting"
 company: DC Consulting
 messagePreview: Je recommande vivement Thomas en tant que collaborateur freelance, après avoir travaillé avec lui ch...
 ---

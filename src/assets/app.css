@@ -11,3 +11,6 @@ body {
   @apply font-semibold text-sm
 }
 
+.article-detail hr {
+  @apply my-6 border-t border-base-300;
+}

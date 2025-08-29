@@ -3,8 +3,8 @@ layout: ../../layouts/MarkdownLayout.astro
 author: Susie
 type: testimonials
 avatar:
-  url: "https://cdn-bgp.bluestacks.com/BGP/fr/gametiles_com.miHoYo.GenshinImpact.jpg"
-  alt: "Blonde Studio"
+  url: "/assets/images/testimonials/susie.jpg"
+  alt: "Susie"
 company: Ecole O'clock
 messagePreview: Nous avons eu le plaisir de travailler avec Thomas sur une mission de tuteur en développement web, e...
 ---

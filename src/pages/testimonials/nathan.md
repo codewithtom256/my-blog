@@ -3,8 +3,8 @@ layout: ../../layouts/MarkdownLayout.astro
 author: Nathan
 type: testimonials
 avatar:
-  url: "https://cdn-bgp.bluestacks.com/BGP/fr/gametiles_com.miHoYo.GenshinImpact.jpg"
-  alt: "Blonde Studio"
+  url: "/assets/images/testimonials/nathan.jpg"
+  alt: "Nathan"
 company: Blonde Studio
 messagePreview: Spécialiste du frameworks Vue.js, Thomas Il a su parfaitement comprendre nos besoins et nous surpren...
 ---

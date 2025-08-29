@@ -6,9 +6,9 @@ const { link, avatar, author, company, message } = Astro.props;
   <article
     class="p-2 bg-base-200 rounded-lg flex space-x-2 drop-shadow-lg border border-base-300 hover:border-primary"
   >
-    <div class="h-12 w-12 aspect-square">
+    <div class="h-14 w-14 aspect-square">
       <img
-        class="rounded-lg object-center object-cover h-full w-full"
+        class="rounded-lg object-center object-cover h-full w-full border border-base-300"
         src={avatar.url}
         alt={avatar.alt || "Project image"}
         loading="lazy"
