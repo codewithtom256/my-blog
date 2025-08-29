@@ -1,6 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
+import Avatar from "../assets/images/avatar.png";
+import Image from "astro/components/Image.astro";
+import PreviewCard from "../components/PreviewCard.astro";
+import Section from "../components/Section.astro";
+import PreviewCardSmall from "../components/PreviewCardSmall.astro";
 const pageTitle = "Home";
 
 const lastPosts = Object.values(
@@ -10,119 +14,117 @@ const lastPosts = Object.values(
 const lastProjects = Object.values(
   import.meta.glob("./projects/*.md", { eager: true })
 ).slice(-4);
+
+const testimonials = Object.values(
+  import.meta.glob("./testimonials/*.md", { eager: true })
+).slice(-3);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <section class="my-8">
     <div class="flex items-center space-x-4">
-      <div class="h-16 w-16 bg-red-200 rounded-full"></div>
+      <div
+        class="h-20 w-20 rounded-full overflow-hidden border border-base-300 bg-primary"
+      >
+        <Image
+          class="object-center object-scale-down"
+          src={Avatar}
+          alt="Avatar"
+        />
+      </div>
       <div>
-        <h1 class="font-bold text-2xl leading-none">Thomas</h1>
-        <h2 class="font-semibold text-md">Développeur généraliste</h2>
+        <h1 class="font-bold text-2xl leading-none">Thomas N.</h1>
+        <h2 class="font-semibold text-md">Generalist developer & 3D artist</h2>
       </div>
     </div>
     <div class="text-sm font-semibold mt-4">
-      Passionné par le développement web et les nouvelles technologies, je
-      m'efforce de créer des solutions innovantes et performantes. Mon parcours
-      m'a permis d'explorer de nombreux domaines, allant du front-end au
-      back-end, en passant par le DevOps et l'automatisation.
+      Hey, welcome to my lab! 🚀 I craft web experiences from front to back,
+      bring ideas to life in 3D, and share my journey through blogs and
+      tutorials right here. I love exploring new tech, building creative
+      projects, and helping others learn along the way. Check out my latest work
+      and let’s create something awesome together! ✨🧑‍💻🎮🧪
     </div>
-    <div class="mt-4">
+    <div class="mt-4 space-y-1">
       <h3 class="text-sm font-semibold leading-none">
-        Email <span class="badge badge-sm leading-none"
+        Email <span
+          class="ml-1 badge badge-sm leading-none border border-base-300"
           >thomas@codewithtom.io</span
         >
       </h3>
       <h3 class="text-sm font-semibold leading-none">
-        Discord <span class="badge badge-sm leading-none">codewithtom</span>
+        Discord <span
+          class="ml-1 badge badge-sm leading-none border border-base-300"
+          >code.with.tom</span
+        >
       </h3>
     </div>
   </section>
 
   <hr class="my-8 border-base-300" />
 
-  <section class="my-8">
-    <h3 class="text-xl font-bold leading-none">Recent Projects</h3>
-    <h2 class="text-sm font-semibold w-96 leading-none mt-1">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quis!
-    </h2>
+  <Section
+    title="Latest projects"
+    description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quis!"
+    seeAllLink="/projects"
+  >
     <div class="grid grid-cols-2 gap-4 mt-8">
       {
         lastProjects.map((post: any) => (
-          <article class="p-2 bg-base-200  rounded-lg flex space-x-2 drop-shadow-lg border border-base-300">
-            <div class="h-32 w-32 aspect-square">
-              <img
-                class="rounded-lg object-center object-cover h-full w-full"
-                src={post.frontmatter.image.url}
-                alt={post.frontmatter.title || "Project image"}
-                loading="lazy"
-                decoding="async"
-                style="image-rendering: auto;"
-              />
-            </div>
-
-            <div class="space-y-3 self-start flex flex-col h-full">
-              <div class="flex justify-between items-center">
-                <div class="badge badge-sm font-semibold border border-base-300">
-                  Unity Tutorial
-                </div>
-                <div class="text-xs font-semibold">1 year ago</div>
-              </div>
-              <div class="space-y-2 flex-1">
-                <div class="leading-none font-bold text-sm">
-                  {post.frontmatter.title}
-                </div>
-                <div class="text-xs text-gray-500 leading-none font-semibold">
-                  {post.frontmatter.description}
-                </div>
-              </div>
-            </div>
-          </article>
+          <PreviewCard
+            link={post.url}
+            previewImage={post.frontmatter.image}
+            title={post.frontmatter.title}
+            description={post.frontmatter.description}
+            date={post.frontmatter.pubDate}
+            tag={post.frontmatter.tags[0]}
+          />
         ))
       }
     </div>
-  </section>
+  </Section>
+
   <hr class="my-8 border-base-300" />
 
-  <section class="my-8">
-    <h3 class="text-xl font-bold leading-none">Recent Blog Posts</h3>
-    <h2 class="text-sm font-semibold w-96 leading-none mt-1">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quis!
-    </h2>
+  <Section
+    title="Latest articles"
+    description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quis!"
+    seeAllLink="/blog"
+  >
     <div class="grid grid-cols-2 gap-4 mt-8">
       {
-        lastProjects.map((post: any) => (
-          <article class="p-2 bg-base-200  rounded-lg flex space-x-2 drop-shadow-lg border border-base-300">
-            <div class="h-32 w-32 aspect-square">
-              <img
-                class="rounded-lg object-center object-cover h-full w-full"
-                src={post.frontmatter.image.url}
-                alt={post.frontmatter.title || "Project image"}
-                loading="lazy"
-                decoding="async"
-                style="image-rendering: auto;"
-              />
-            </div>
-
-            <div class="space-y-3 self-start flex flex-col h-full">
-              <div class="flex justify-between items-center">
-                <div class="badge badge-sm font-semibold border border-base-300">
-                  Unity Tutorial
-                </div>
-                <div class="text-xs font-semibold">1 year ago</div>
-              </div>
-              <div class="space-y-2 flex-1">
-                <div class="leading-none font-bold text-sm">
-                  {post.frontmatter.title}
-                </div>
-                <div class="text-xs text-gray-500 leading-none font-semibold">
-                  {post.frontmatter.description}
-                </div>
-              </div>
-            </div>
-          </article>
+        lastPosts.map((post: any) => (
+          <PreviewCard
+            link={post.url}
+            previewImage={post.frontmatter.image}
+            title={post.frontmatter.title}
+            description={post.frontmatter.description}
+            date={post.frontmatter.pubDate}
+            tag={post.frontmatter.tags[0]}
+          />
         ))
       }
     </div>
-  </section>
+  </Section>
+
+  <hr class="my-8 border-base-300" />
+
+  <Section
+    title="Testimonals"
+    description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quis!"
+    seeAllLink="/testimonials"
+  >
+    <div class="grid grid-cols-3 gap-4 mt-8">
+      {
+        testimonials.map((testimonal: any) => (
+          <PreviewCardSmall
+            link={testimonal.url}
+            avatar={testimonal.frontmatter.avatar}
+            author={testimonal.frontmatter.author}
+            company={testimonal.frontmatter.company}
+            message={testimonal.frontmatter.messagePreview}
+          />
+        ))
+      }
+    </div>
+  </Section>
 </BaseLayout>

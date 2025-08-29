@@ -1,0 +1,42 @@
+---
+import { formatDistance, subDays } from "date-fns";
+const { link, previewImage, title, description, date, tag } = Astro.props;
+
+const formattedDate = formatDistance(new Date(date), new Date(), {
+  addSuffix: true,
+});
+---
+
+<a href={link}>
+  <article
+    class="p-2 bg-base-200 rounded-lg flex space-x-2 drop-shadow-lg border border-base-300"
+  >
+    <div class="h-32 w-32 aspect-square">
+      <img
+        class="rounded-lg object-center object-cover h-full w-full"
+        src={previewImage.url}
+        alt={previewImage.alt}
+        loading="lazy"
+        decoding="async"
+        style="image-rendering: auto;"
+      />
+    </div>
+
+    <div class="space-y-3 self-start flex flex-col h-full">
+      <div class="flex justify-between items-center">
+        <div class="badge badge-sm font-semibold border border-base-300">
+          {tag}
+        </div>
+        <div class="text-xs font-semibold">{formattedDate}</div>
+      </div>
+      <div class="space-y-2 flex-1">
+        <div class="leading-none font-bold text-sm">
+          {title}
+        </div>
+        <div class="text-xs text-gray-500 leading-none font-semibold">
+          {description}
+        </div>
+      </div>
+    </div>
+  </article>
+</a>

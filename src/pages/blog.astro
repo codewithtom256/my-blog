@@ -1,6 +1,8 @@
 ---
 import Image from "astro/components/Image.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import PreviewCard from "../components/PreviewCard.astro";
 const allPosts = Object.values(
   import.meta.glob("./posts/*.md", { eager: true })
 );
@@ -8,47 +10,23 @@ const pageTitle = "Blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <section class="my-8">
-    <h2 class="text-2xl font-bold">All Posts</h2>
-    <h3 class="text-md font-semibold w-96 text-black opacity-50">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quis!
-    </h3>
+  <Section
+    title="All blog posts"
+    description="Découvrez tous mes articles de blog récents."
+  >
     <div class="grid grid-cols-2 gap-4 mt-8">
       {
         allPosts.map((post: any) => (
-          <article class="p-2 bg-base-200  rounded-lg flex h-48 drop-shadow-lg">
-            <div class="aspect-square">
-              <Image
-                src={post.frontmatter.image.url}
-                alt={post.frontmatter.title || "Blog post image"}
-                class="rounded-lg object-center object-cover h-full w-full antialiased"
-              />
-            </div>
-            <div class="ml-4 flex flex-col justify-between w-full">
-              <div class="flex justify-between text-sm">
-                <p>{post.frontmatter.pubDate}</p>
-                <p>a</p>
-              </div>
-              <div>
-                <h3 class="text-md font-bold">{post.frontmatter.title}</h3>
-                <p class="text-sm font-normal mt-2">
-                  {(() => {
-                    const text = post.frontmatter.description || "";
-                    const words = text.split(" ");
-                    return words.length > 15
-                      ? words.slice(0, 15).join(" ") + "..."
-                      : text;
-                  })()}
-                </p>
-              </div>
-
-              <a href="" class="text-primary">
-                Read the project
-              </a>
-            </div>
-          </article>
+          <PreviewCard
+            link={post.url}
+            previewImage={post.frontmatter.image}
+            title={post.frontmatter.title}
+            description={post.frontmatter.description}
+            date={post.frontmatter.pubDate}
+            tag={post.frontmatter.tags[0]}
+          />
         ))
       }
     </div>
-  </section>
+  </Section>
 </BaseLayout>

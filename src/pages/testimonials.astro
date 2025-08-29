@@ -1,0 +1,30 @@
+---
+import PreviewCardSmall from "../components/PreviewCardSmall.astro";
+import Section from "../components/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const allTestimonials = Object.values(
+  import.meta.glob("./testimonials/*.md", { eager: true })
+);
+const pageTitle = "Testimonials";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <Section
+    title="Testimonals"
+    description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, quis!"
+  >
+    <div class="grid grid-cols-3 gap-4 mt-8">
+      {
+        allTestimonials.map((testimonal: any) => (
+          <PreviewCardSmall
+            link={testimonal.url}
+            avatar={testimonal.frontmatter.avatar}
+            author={testimonal.frontmatter.author}
+            company={testimonal.frontmatter.company}
+            message={testimonal.frontmatter.messagePreview}
+          />
+        ))
+      }
+    </div>
+  </Section>
+</BaseLayout>
