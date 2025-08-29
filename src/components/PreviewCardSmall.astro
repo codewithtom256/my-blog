@@ -4,7 +4,7 @@ const { link, avatar, author, company, message } = Astro.props;
 
 <a href={link}>
   <article
-    class="p-2 bg-base-200 rounded-lg flex space-x-2 drop-shadow-lg border border-base-300"
+    class="p-2 bg-base-200 rounded-lg flex space-x-2 drop-shadow-lg border border-base-300 hover:border-primary"
   >
     <div class="h-12 w-12 aspect-square">
       <img
@@ -20,12 +20,14 @@ const { link, avatar, author, company, message } = Astro.props;
     <div class="self-start flex flex-col h-full">
       <h3 class="text-sm font-semibold leading-none">
         {author}
-        <span class="badge badge-sm leading-none pl-0">
+        <span
+          class="badge badge-sm leading-none bg-primary border border-base-300"
+        >
           @{company}
         </span>
       </h3>
 
-      <div class="space-y-2 flex-1">
+      <div class="space-y-2 flex-1 mt-1">
         <div class="text-xs text-gray-500 leading-none font-semibold">
           {message}
         </div>

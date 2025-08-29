@@ -5,7 +5,7 @@ type: testimonials
 avatar:
   url: "https://cdn-bgp.bluestacks.com/BGP/fr/gametiles_com.miHoYo.GenshinImpact.jpg"
   alt: "Blonde Studio"
-company: Damien Couteillou Consulting
+company: DC Consulting
 messagePreview: Je recommande vivement Thomas en tant que collaborateur freelance, après avoir travaillé avec lui ch...
 ---
 
