@@ -2,7 +2,7 @@
 
 ---
 
-<form name="contact" netlify>
+<form name="contact" method="POST" data-netlify="true">
   <fieldset
     class="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4 mt-8 flex"
   >
@@ -11,6 +11,7 @@
         <label class="label font-semibold text-xs">Name</label>
         <input
           type="text"
+          name="name"
           class="input input-sm w-full focus:outline-none focus:border-primary"
           placeholder="John Doe"
         />
@@ -19,6 +20,7 @@
         <label class="label font-semibold text-xs">Email</label>
         <input
           type="text"
+          name="email"
           class="input input-sm w-full focus:outline-none focus:border-primary"
           placeholder="John@doe.com"
         />
@@ -31,6 +33,7 @@
       <div class="flex flex-col h-full">
         <label class="label font-semibold text-xs">Message</label>
         <textarea
+          name="message"
           class="textarea w-full focus:outline-none focus:border-primary textarea-sm flex-1"
           placeholder="Hi,I would love to collaborate on a new web app project!"
         ></textarea>
