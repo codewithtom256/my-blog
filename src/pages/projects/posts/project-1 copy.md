@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
+layout: ../../../layouts/MarkdownLayout.astro
 type: projects
 
 title: "Genshin Impact Gacha Simulator Project (With Memes & GIFs)"
@@ -9,7 +9,7 @@ author: "Genshin Dev"
 image:
   url: "https://cdn-bgp.bluestacks.com/BGP/fr/gametiles_com.miHoYo.GenshinImpact.jpg"
   alt: "Genshin Impact logo with elemental icons."
-tags: ["genshin impact", "gacha", "simulator", "markdown", "guide", "memes", "gifs"]
+projectCategory: "back"
 ---
 
 lorem ipsim

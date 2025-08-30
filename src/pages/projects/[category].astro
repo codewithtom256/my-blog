@@ -1,0 +1,102 @@
+---
+import PreviewCard from "../../components/PreviewCard.astro";
+import Section from "../../components/Section.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const allPosts = Object.values(
+    import.meta.glob("./posts/*.md", { eager: true })
+  );
+
+  const uniqueTags = [
+    ...new Set(
+      allPosts
+        .map((post: any) => post.frontmatter.projectCategory.toLowerCase())
+        .flat()
+    ),
+  ];
+
+  return uniqueTags.map((category) => {
+    const filteredPosts = allPosts.filter(
+      (post: any) =>
+        typeof post.frontmatter.projectCategory === "string" &&
+        post.frontmatter.projectCategory.toLowerCase() ===
+          category.toLowerCase()
+    );
+    return {
+      params: { category },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { url } = Astro.request;
+function isActive(path: string) {
+  const currentUrl = new URL(url, Astro.site || "http://localhost");
+  return currentUrl.pathname === path;
+}
+
+const { category } = Astro.params;
+const { posts } = Astro.props;
+
+const pageTitle = `Posts in category: ${category}`;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <Section
+    title="All blog posts"
+    description="Découvrez tous mes articles de blog récents."
+  >
+    <nav class="mt-8 space-x-2">
+      <a
+        href="/projects"
+        class={`btn btn-sm font-bold text-sm ${isActive("/projects") ? "btn-primary" : ""}`}
+        >All</a
+      >
+      <a
+        href="/projects/web"
+        class={`btn btn-sm font-bold text-sm ${isActive("/projects/web") ? "btn-primary" : ""}`}
+        >web</a
+      >
+      <a
+        href="/projects/back"
+        class={`btn btn-sm font-bold text-sm ${isActive("/projects/back") ? "btn-primary" : ""}`}
+        >back</a
+      >
+    </nav>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+      {
+        posts.map((post: any) => (
+          <PreviewCard
+            link={post.url}
+            previewImage={post.frontmatter.image}
+            title={post.frontmatter.title}
+            description={post.frontmatter.description}
+            date={post.frontmatter.pubDate}
+            category={post.frontmatter.projectCategory}
+          />
+        ))
+      }
+    </div>
+  </Section>
+</BaseLayout>
+
+<!-- <BaseLayout pageTitle={category}>
+  <nav>
+    <a href="/blog">All</a>
+    <a href="/blog/unity">Unity</a>
+    <a href="/blog/tutorial">Tutorials</a>
+  </nav>
+
+  <p>Posts tagged with {category}</p>
+  <ul>
+    {
+      posts.map((post: any) => (
+        <li>
+          <a href={post.url}>{post.frontmatter.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout> -->

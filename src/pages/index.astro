@@ -13,11 +13,11 @@ import ContactForm from "../components/ContactForm.astro";
 const pageTitle = "Home";
 
 const lastProjects = Object.values(
-  import.meta.glob("./projects/*.md", { eager: true })
+  import.meta.glob("./projects/posts/*.md", { eager: true })
 ).slice(-4);
 
 const lastPosts = Object.values(
-  import.meta.glob("./posts/*.md", { eager: true })
+  import.meta.glob("./blog/posts/*.md", { eager: true })
 ).slice(-4);
 
 const testimonials = Object.values(
@@ -81,7 +81,7 @@ const testimonials = Object.values(
             title={post.frontmatter.title}
             description={post.frontmatter.description}
             date={post.frontmatter.pubDate}
-            tag={post.frontmatter.tags[0]}
+            category={post.frontmatter.projectCategory}
           />
         ))
       }
@@ -104,7 +104,7 @@ const testimonials = Object.values(
             title={post.frontmatter.title}
             description={post.frontmatter.description}
             date={post.frontmatter.pubDate}
-            tag={post.frontmatter.tags[0]}
+            category={post.frontmatter.postCategory}
           />
         ))
       }

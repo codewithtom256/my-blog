@@ -6,7 +6,10 @@ import Hero from "../assets/images/hero.png";
 const { url } = Astro.request;
 function isActive(path: string) {
   const currentUrl = new URL(url, Astro.site || "http://localhost");
-  return currentUrl.pathname === path;
+  if (path === "/") {
+    return currentUrl.pathname === "/";
+  }
+  return currentUrl.pathname.startsWith(path);
 }
 ---
 
@@ -19,7 +22,7 @@ function isActive(path: string) {
         <div tabindex="0" role="button" class="btn btn-ghost md:hidden pl-0">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
+            class="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -33,7 +36,7 @@ function isActive(path: string) {
         </div>
         <ul
           tabindex="0"
-          class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 p-2 shadow"
+          class="menu menu-lg min-w-max dropdown-content bg-base-100 z-10 mt-3 p-2 shadow"
         >
           <li>
             <a href="/">Home</a>
@@ -72,22 +75,22 @@ function isActive(path: string) {
         </li>
         <li>
           <a
-            href="/projects/"
-            class={`btn btn-sm font-bold text-sm ${isActive("/projects/") ? "btn-primary" : ""}`}
+            href="/projects"
+            class={`btn btn-sm font-bold text-sm ${isActive("/projects") ? "btn-primary" : ""}`}
             >Projects</a
           >
         </li>
         <li>
           <a
-            href="/blog/"
-            class={`btn btn-sm font-bold text-sm ${isActive("/blog/") ? "btn-primary" : ""}`}
+            href="/blog"
+            class={`btn btn-sm font-bold text-sm ${isActive("/blog") ? "btn-primary" : ""}`}
             >Blog</a
           >
         </li>
         <li>
           <a
-            href="/about/"
-            class={`btn btn-sm font-bold text-sm ${isActive("/about/") ? "btn-primary" : ""}`}
+            href="/about"
+            class={`btn btn-sm font-bold text-sm ${isActive("/about") ? "btn-primary" : ""}`}
             >About</a
           >
         </li>

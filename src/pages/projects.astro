@@ -1,28 +1,53 @@
 ---
-import PreviewCard from "../components/PreviewCard.astro";
-import Section from "../components/Section.astro";
+import Image from "astro/components/Image.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-const allProjects = Object.values(
-  import.meta.glob("./projects/*.md", { eager: true })
+import Section from "../components/Section.astro";
+import PreviewCard from "../components/PreviewCard.astro";
+const allPosts = Object.values(
+  import.meta.glob("./projects/posts/*.md", { eager: true })
 );
 const pageTitle = "Projects";
+
+const { url } = Astro.request;
+function isActive(path: string) {
+  const currentUrl = new URL(url, Astro.site || "http://localhost");
+  return currentUrl.pathname === path;
+}
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <Section
-    title="All projects"
-    description="Découvrez tous mes projets récents."
+    title="All projects posts"
+    description="Découvrez tous mes articles de projets récents."
   >
+    <nav class="mt-8 space-x-2">
+      <a
+        href="/projects"
+        class={`btn btn-sm font-bold text-sm ${isActive("/projects") ? "btn-primary" : ""}`}
+        >All</a
+      >
+      <a
+        href="/projects/web"
+        class={`btn btn-sm font-bold text-sm ${isActive("/projects/web") ? "btn-primary" : ""}`}
+        >web</a
+      >
+      <a
+        href="/projects/back"
+        class={`btn btn-sm font-bold text-sm ${isActive("/projects/back") ? "btn-primary" : ""}`}
+        >back</a
+      >
+    </nav>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
       {
-        allProjects.map((post: any) => (
+        allPosts.map((post: any) => (
           <PreviewCard
             link={post.url}
             previewImage={post.frontmatter.image}
             title={post.frontmatter.title}
             description={post.frontmatter.description}
             date={post.frontmatter.pubDate}
-            tag={post.frontmatter.tags[0]}
+            category={post.frontmatter.projectCategory}
           />
         ))
       }

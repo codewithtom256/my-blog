@@ -1,15 +1,15 @@
 ---
-layout: ../../layouts/MarkdownLayout.astro
+layout: ../../../layouts/MarkdownLayout.astro
 type: blog
 
-title: "My First Blog Post"
+title: "My First Blog Post about tutorial"
 pubDate: 2025-08-26T16:45
 description: "This is the first post of my new Astro blog."
 author: "Astro Learner"
 image:
   url: "https://docs.astro.build/assets/rose.webp"
   alt: "The Astro logo on a dark background with a pink glow."
-tags: ["astro", "blogging", "learning in public"]
+postCategory: "Tutorial"
 ---
 
 lorem ipsim

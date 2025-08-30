@@ -4,9 +4,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Section from "../components/Section.astro";
 import PreviewCard from "../components/PreviewCard.astro";
 const allPosts = Object.values(
-  import.meta.glob("./posts/*.md", { eager: true })
+  import.meta.glob("./blog/posts/*.md", { eager: true })
 );
 const pageTitle = "Blog";
+
+const { url } = Astro.request;
+function isActive(path: string) {
+  const currentUrl = new URL(url, Astro.site || "http://localhost");
+  return currentUrl.pathname === path;
+}
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -14,6 +20,24 @@ const pageTitle = "Blog";
     title="All blog posts"
     description="Découvrez tous mes articles de blog récents."
   >
+    <nav class="mt-8 space-x-2">
+      <a
+        href="/blog"
+        class={`btn btn-sm font-bold text-sm ${isActive("/blog") ? "btn-primary" : ""}`}
+        >All</a
+      >
+      <a
+        href="/blog/unity"
+        class={`btn btn-sm font-bold text-sm ${isActive("/blog/unity") ? "btn-primary" : ""}`}
+        >Unity</a
+      >
+      <a
+        href="/blog/tutorial"
+        class={`btn btn-sm font-bold text-sm ${isActive("/blog/tutorial") ? "btn-primary" : ""}`}
+        >Tutorials</a
+      >
+    </nav>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
       {
         allPosts.map((post: any) => (
@@ -23,7 +47,7 @@ const pageTitle = "Blog";
             title={post.frontmatter.title}
             description={post.frontmatter.description}
             date={post.frontmatter.pubDate}
-            tag={post.frontmatter.tags[0]}
+            category={post.frontmatter.postCategory}
           />
         ))
       }
