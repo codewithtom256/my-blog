@@ -8,9 +8,43 @@ body {
 }
 
 .article-detail p {
-  @apply font-semibold text-sm
+  @apply text-sm mb-4 flex
 }
 
 .article-detail hr {
   @apply my-6 border-t border-base-300;
+}
+
+.article-detail h2 {
+  @apply text-xl font-bold leading-none mb-4;
+}
+
+
+.article-detail ul {
+  @apply list-disc list-inside  text-sm leading-none my-4 ml-4;
+}
+
+.article-detail li {
+  @apply my-2;
+}
+
+
+.article-detail a {
+  @apply text-primary ;
+}
+
+.article-detail pre {
+  @apply p-2 rounded-lg border border-base-300 my-4 text-xs;
+}
+
+.article-detail br {
+  @apply my-4;
+}
+
+.article-detail img {
+  @apply rounded-lg border border-base-300  object-center ;
+}
+
+.article-detail blockquote {
+  @apply border-l-4 border-base-300 italic pl-4 my-4;
 }

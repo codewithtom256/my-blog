@@ -32,7 +32,8 @@ export async function getStaticPaths() {
 const { url } = Astro.request;
 function isActive(path: string) {
   const currentUrl = new URL(url, Astro.site || "http://localhost");
-  return currentUrl.pathname === path;
+  // Only match exact path, not "/"
+  return path !== "/" && currentUrl.pathname === path;
 }
 
 const { category } = Astro.params;
@@ -43,8 +44,8 @@ const pageTitle = `Posts in category: ${category}`;
 
 <BaseLayout pageTitle={pageTitle}>
   <Section
-    title="All blog posts"
-    description="Découvrez tous mes articles de blog récents."
+    title={`Posts in "${category.charAt(0).toUpperCase() + category.slice(1)}"`}
+    description="Explore all my latest blog posts in this category."
   >
     <nav class="mt-8 space-x-2">
       <a

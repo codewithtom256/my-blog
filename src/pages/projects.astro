@@ -20,14 +20,15 @@ const uniqueTags = Array.from(
 const { url } = Astro.request;
 function isActive(path: string) {
   const currentUrl = new URL(url, Astro.site || "http://localhost");
-  return currentUrl.pathname === path;
+  // Only match exact path, not "/"
+  return path !== "/" && currentUrl.pathname === path;
 }
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <Section
-    title="All projects posts"
-    description="Découvrez tous mes articles de projets récents."
+    title="All Project Posts"
+    description="Explore all my recent project articles and discover what I've been working on."
   >
     <nav class="mt-8 space-x-2">
       <a

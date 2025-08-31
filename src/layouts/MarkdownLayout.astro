@@ -12,14 +12,14 @@ const { frontmatter } = Astro.props;
       <li class="text-purple-400">
         <a href={"/" + frontmatter.type}>{frontmatter.type}</a>
       </li>
-      <li class="text-purple-600">
+      <li class="text-purple-400">
         {frontmatter.title || frontmatter.company}
       </li>
     </ul>
   </div>
   <Section
     title={frontmatter.title || frontmatter.author}
-    description={frontmatter.description || frontmatter.company}
+    description={frontmatter.fullDescription || frontmatter.company}
   >
     <div class="article-detail mt-8">
       <slot />
