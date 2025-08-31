@@ -9,7 +9,7 @@ author: "Genshin Dev"
 image:
   url: "https://cdn-bgp.bluestacks.com/BGP/fr/gametiles_com.miHoYo.GenshinImpact.jpg"
   alt: "Genshin Impact logo with elemental icons."
-projectCategory: "web"
+projectCategory: "Web"
 ---
 
 lorem ipsim

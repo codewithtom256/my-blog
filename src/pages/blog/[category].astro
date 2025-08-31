@@ -24,7 +24,7 @@ export async function getStaticPaths() {
     );
     return {
       params: { category },
-      props: { posts: filteredPosts },
+      props: { posts: filteredPosts, uniqueTags },
     };
   });
 }
@@ -36,7 +36,7 @@ function isActive(path: string) {
 }
 
 const { category } = Astro.params;
-const { posts } = Astro.props;
+const { posts, uniqueTags } = Astro.props;
 
 const pageTitle = `Posts in category: ${category}`;
 ---
@@ -52,16 +52,16 @@ const pageTitle = `Posts in category: ${category}`;
         class={`btn btn-sm font-bold text-sm ${isActive("/blog") ? "btn-primary" : ""}`}
         >All</a
       >
-      <a
-        href="/blog/unity"
-        class={`btn btn-sm font-bold text-sm ${isActive("/blog/unity") ? "btn-primary" : ""}`}
-        >Unity</a
-      >
-      <a
-        href="/blog/tutorial"
-        class={`btn btn-sm font-bold text-sm ${isActive("/blog/tutorial") ? "btn-primary" : ""}`}
-        >Tutorials</a
-      >
+      {
+        uniqueTags.map((tag) => (
+          <a
+            href={`/blog/${tag}`}
+            class={`btn btn-sm font-bold text-sm ${isActive(`/blog/${tag}`) ? "btn-primary" : ""}`}
+          >
+            {tag.charAt(0).toUpperCase() + tag.slice(1)}
+          </a>
+        ))
+      }
     </nav>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">

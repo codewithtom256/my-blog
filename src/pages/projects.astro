@@ -8,6 +8,15 @@ const allPosts = Object.values(
 );
 const pageTitle = "Projects";
 
+// Extract unique tags from allPosts
+const uniqueTags = Array.from(
+  new Set(
+    allPosts
+      .map((post: any) => post.frontmatter.projectCategory.toLowerCase() || [])
+      .flat()
+  )
+);
+
 const { url } = Astro.request;
 function isActive(path: string) {
   const currentUrl = new URL(url, Astro.site || "http://localhost");
@@ -26,16 +35,16 @@ function isActive(path: string) {
         class={`btn btn-sm font-bold text-sm ${isActive("/projects") ? "btn-primary" : ""}`}
         >All</a
       >
-      <a
-        href="/projects/web"
-        class={`btn btn-sm font-bold text-sm ${isActive("/projects/web") ? "btn-primary" : ""}`}
-        >web</a
-      >
-      <a
-        href="/projects/back"
-        class={`btn btn-sm font-bold text-sm ${isActive("/projects/back") ? "btn-primary" : ""}`}
-        >back</a
-      >
+      {
+        uniqueTags.map((tag) => (
+          <a
+            href={`/projects/${tag}`}
+            class={`btn btn-sm font-bold text-sm ${isActive(`/projects/${tag}`) ? "btn-primary" : ""}`}
+          >
+            {tag.charAt(0).toUpperCase() + tag.slice(1)}
+          </a>
+        ))
+      }
     </nav>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
