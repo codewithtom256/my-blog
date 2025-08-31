@@ -34,7 +34,7 @@ const { url } = Astro.request;
 function isActive(path: string) {
   const currentUrl = new URL(url, Astro.site || "http://localhost");
   // Only match exact path, not "/"
-  return path !== "/" && currentUrl.pathname === path;
+  return path !== "/" && currentUrl.pathname === path + "/";
 }
 
 const { category } = Astro.params;
@@ -50,14 +50,14 @@ const pageTitle = `Posts in category: ${category}`;
   >
     <nav class="mt-8 space-x-2">
       <a
-        href="/projects"
+        href="/projects/"
         class={`btn btn-sm font-bold text-sm ${isActive("/projects") ? "btn-primary" : ""}`}
         >All</a
       >
       {
         uniqueTags.map((tag) => (
           <a
-            href={`/projects/${tag}`}
+            href={`/projects/${tag}/`}
             class={`btn btn-sm font-bold text-sm ${isActive(`/projects/${tag}`) ? "btn-primary" : ""}`}
           >
             {tag.charAt(0).toUpperCase() + tag.slice(1)}

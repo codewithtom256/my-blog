@@ -10,7 +10,7 @@ author: ""
 image:
   url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLJjP8meEvrXIu_nXksY6IvczAk-KuAKnhLg&s"
   alt: "Genshin Impact logo with elemental icons."
-projectCategory: "Web Dev"
+projectCategory: "WebDev"
 ---
 
 ![Thumbnail](/assets/images/projects/thumbnail/thumbnail-1.png)
