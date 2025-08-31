@@ -3,7 +3,7 @@ layout: ../../../layouts/MarkdownLayout.astro
 type: blog
 
 title: "Welcome to my website !"
-pubDate: 2025-08-31T22:00
+pubDate: 2025-08-31
 description: "Hey there, fellow internet traveler! 👋 This is my first blog post and the grand opening of my..."
 fullDescription: "Hey there, fellow internet traveler! 👋 This is my first blog post and the grand opening of my website. Here’s what you’ll find here" 
 author: ""

@@ -3,7 +3,7 @@ layout: ../../../layouts/MarkdownLayout.astro
 type: projects
 
 title: "Building my personal website with astro"
-pubDate: 2025-08-31T22:30
+pubDate: 2025-08-31
 description: "Discover how I built my personal website using Astro, focusing on speed, simplicity, and modern web..."
 fullDescription: "Discover how I built my personal website using Astro, focusing on speed, simplicity, and modern web development best practices. Learn about the tools and more"
 author: ""
